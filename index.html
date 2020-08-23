@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<style>
+    .color, .format_orientation, .type, .page_color, .cover_color {
+        margin-right: 10px;
+        display: inline-block;
+    }
+
+    .block1 {
+        background-color: aliceblue;
+        border: 2px solid cadetblue;
+        padding: 0 10px 10px 10px;
+        margin-top: 20px;
+    }
+
+    .block2 {
+        background-color: aquamarine;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        margin: 0;
+        padding: 0;
+        font-size: 25px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    button {
+        margin-top: 10px;
+    }
+</style>
+
+<div id="app">
+
+    <div class="block1">
+        <h2 class="block2">Общие</h2>
+
+        <!--  выбор крепления  -->
+        <div>
+            <h2>Выберите тип крепления</h2>
+            <label class="type" v-for="type in types">
+                <input type="radio" v-bind:value="type" v-model="select_type">
+                {{ type }}
+            </label>
+        </div>
+
+        <!--  выбор цвета пружины  -->
+        <div v-show="isSpring">
+            <h2>Выберите цвет пружины</h2>
+            <div class="color" v-for="color in colors">
+                <label>
+                    <input type="radio" v-bind:value="color" v-model="select_color">
+                    {{ color }}
+                </label>
+            </div>
+        </div>
+
+        <!--  тираж  -->
+        <div>
+            <h2>Тираж:</h2>
+            <label>
+                <input type="number" v-model="printing">
+            </label>
+        </div>
+
+        <!--  выбор формата и ориентации  -->
+        <div>
+            <h2>Формат и ориентация:</h2>
+            <div class="format_orientation">
+                <label>
+                    <select v-model="select_format_orientation">
+                        <option v-for="format_orientation in format_orientations">{{ format_orientation }}</option>
+                    </select>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="block1">
+        <h2 class="block2">Страница</h2>
+
+        <!--  ввод количества страниц  -->
+        <div>
+            <h2>Количество страниц:</h2>
+            <label>
+                <div v-if="isBracket">
+                    <select v-model="page_count">
+                        <option v-for="page in bracket_page_list">{{ page }}</option>
+                    </select>
+                </div>
+                <div v-else>
+                    <select v-model="page_count">
+                        <option v-for="page in page_list">{{ page }}</option>
+                    </select>
+                </div>
+            </label>
+        </div>
+
+        <!--  цветность  -->
+        <div>
+            <h2>Цветность (сам лист + отиск):</h2>
+            <div class="page_color" v-for="page_color in page_colors">
+                <label>
+                    <input type="radio" v-bind:value="page_color" v-model="select_page_color">
+                    {{ page_color }}
+                </label>
+            </div>
+        </div>
+
+        <!--  материал  -->
+        <div>
+            <h2>Материал</h2>
+            <label>
+                <select v-model="select_page_type">
+                    <option v-for="page_type in page_types">{{ page_type }}</option>
+                </select>
+            </label>
+        </div>
+    </div>
+
+    <div class="block1">
+        <h2 class="block2">Обложка</h2>
+        <button v-if="has_cover" v-on:click="has_cover = false">Убрать обложку</button>
+        <button v-else v-on:click="has_cover = true">Добавить обложку</button>
+
+        <div v-show="has_cover">
+            <!--  цветность обложки  -->
+            <div>
+                <h2>Цветность обложки:</h2>
+                <div class="cover_color" v-for="cover_color in cover_colors">
+                    <label>
+                        <input type="radio" v-bind:value="cover_color" v-model="select_cover_color">
+                        {{ cover_color }}
+                    </label>
+                </div>
+            </div>
+
+            <!--  материал  -->
+            <div>
+                <h2>Материал</h2>
+                <label>
+                    <select v-model="select_cover_type">
+                        <option v-for="cover_type in cover_types">{{ cover_type }}</option>
+                    </select>
+                </label>
+            </div>
+
+            <!--  ламинация  -->
+            <div>
+                <h2>Ламинация</h2>
+                <label>
+                    <select v-model="select_cover_lamination">
+                        <option v-for="cover_lamination in cover_laminations">{{ cover_lamination }}</option>
+                    </select>
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            select_type: 'Пружина',
+            types: [
+                'Пружина',
+                'Клей',
+                'Скоба',
+            ],
+            select_color: 'Белая',
+            colors: [
+                'Белая',
+                'Черная',
+                'Серебро'
+            ],
+            select_format_orientation: 'A6, Книга',
+            format_orientations: [
+                'A6, Книга',
+                'A5, Книга',
+                'A4, Книга',
+                'A3, Книга',
+                'A6, Альбом',
+                'A5, Альбом',
+                'A4, Альбом',
+                'A3, Альбом'
+            ],
+            page_count: 8,
+            bracket_page_list: [4, 8, 12, 16, 20, 24, 28, 32, 36, 40],
+            page_list: [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40],
+            select_page_color: '4+0',
+            page_colors: [
+                '4+0',
+                '1+0',
+                '4+4',
+                '1+1'
+            ],
+            printing: 10,
+            select_cover_color: '4+0',
+            cover_colors: [
+                '4+0',
+                '1+0',
+                '4+4',
+                '1+1'
+            ],
+            select_page_type: 'офсетка 80гр',
+            page_types: [
+                'офсетка 80гр',
+                'офсетка 100гр',
+                'офсетка 120гр',
+                'офсетка 160гр',
+                'офсетка 180гр',
+                'офсетка 200гр',
+                'меловка 130гр',
+                'меловка 150гр',
+                'меловка 170гр',
+                'меловка 200гр',
+                'меловка 250гр',
+                'меловка 300гр',
+                'картон 270гр',
+                'картон 300гр'
+            ],
+            select_cover_type: 'офсетка 80гр',
+            cover_types: [
+                'офсетка 80гр',
+                'офсетка 100гр',
+                'офсетка 120гр',
+                'офсетка 160гр',
+                'офсетка 180гр',
+                'офсетка 200гр',
+                'меловка 130гр',
+                'меловка 150гр',
+                'меловка 170гр',
+                'меловка 200гр',
+                'меловка 250гр',
+                'меловка 300гр',
+                'картон 270гр',
+                'картон 300гр'
+            ],
+            select_cover_lamination: 'Без ламинации',
+            cover_laminations: [
+                'Без ламинации',
+                'Глянец 32 мкр',
+                'Глянец 75 мкр',
+                'Матовая 32 мкр',
+                'Матовая 75 мкр',
+                'Ламинация soft tach',
+                'Прозрачный пластик'
+            ],
+            has_cover: true
+        },
+        computed: {
+            isSpring: function () {
+                return this.select_type === 'Пружина'
+            },
+            isBracket: function () {
+                return this.select_type === 'Скоба'
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
