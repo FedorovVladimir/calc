@@ -8,7 +8,7 @@
 <body>
 
 <style>
-    .color, .format_orientation, .type, .page_color, .cover_color {
+    .color, .format_orientation, .page_color, .cover_color {
         margin-right: 10px;
         display: inline-block;
     }
@@ -120,7 +120,7 @@
     </div>
 
     <div class="block1">
-        <h2 class="block2">Страница</h2>
+        <h2 class="block2">Блок</h2>
 
         <!--  ввод количества страниц  -->
         <div>
@@ -156,6 +156,16 @@
             <label>
                 <select v-model="select_page_type">
                     <option v-for="page_type in page_types">{{ page_type }}</option>
+                </select>
+            </label>
+        </div>
+
+        <!--  ламинация  -->
+        <div>
+            <h2>Ламинация</h2>
+            <label>
+                <select v-model="select_cover_lamination_block">
+                    <option v-for="cover_lamination in cover_laminations">{{ cover_lamination }}</option>
                 </select>
             </label>
         </div>
@@ -275,6 +285,7 @@
                 'картон 270гр',
                 'картон 300гр'
             ],
+            select_cover_lamination_block: 'Без ламинации',
             select_cover_lamination: 'Без ламинации',
             cover_laminations: [
                 'Без ламинации',
