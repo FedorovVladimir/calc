@@ -39,21 +39,53 @@
     button {
         margin-top: 10px;
     }
+
+    .select-type-img {
+        height: 130px;
+        margin: 20px;
+    }
+
+    .select-type-a {
+        display: inline-block;
+        text-align: center;
+        opacity: 50%;
+    }
+
+    .select-type-a p {
+        margin: 20px 0 0 0;
+        padding: 0;
+    }
+
+    .select-type-a:hover {
+        opacity: 90%;
+    }
+
+    .active {
+        opacity: 100%;
+    }
 </style>
 
 <div id="app">
 
+    <!--  выбор крепления  -->
+    <div>
+        <h2>Выберите тип крепления</h2>
+            <a class="select-type-a" v-on:click="select_type='Скоба'" v-bind:class="{ active: isBracket }">
+                <p>Скоба</p>
+                <img class="select-type-img" src="img/rect1.png" alt="Скоба">
+            </a>
+            <a class="select-type-a" v-on:click="select_type='Пружина'" v-bind:class="{ active: isSpring }">
+                <p>Пружина</p>
+                <img class="select-type-img" src="img/rect2.png" alt="Пружина">
+            </a>
+            <a class="select-type-a" v-on:click="select_type='Клей'" v-bind:class="{ active: isGlue }">
+                <p>Клей</p>
+                <img class="select-type-img" src="img/rect3.png" alt="Клей">
+            </a>
+    </div>
+
     <div class="block1">
         <h2 class="block2">Общие</h2>
-
-        <!--  выбор крепления  -->
-        <div>
-            <h2>Выберите тип крепления</h2>
-            <label class="type" v-for="type in types">
-                <input type="radio" v-bind:value="type" v-model="select_type">
-                {{ type }}
-            </label>
-        </div>
 
         <!--  выбор цвета пружины  -->
         <div v-show="isSpring">
@@ -173,12 +205,7 @@
     new Vue({
         el: '#app',
         data: {
-            select_type: 'Пружина',
-            types: [
-                'Пружина',
-                'Клей',
-                'Скоба',
-            ],
+            select_type: 'Скоба',
             select_color: 'Белая',
             colors: [
                 'Белая',
@@ -266,6 +293,9 @@
             },
             isBracket: function () {
                 return this.select_type === 'Скоба'
+            },
+            isGlue: function () {
+                return this.select_type === 'Клей'
             }
         }
     });
