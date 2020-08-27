@@ -64,6 +64,11 @@
     .active {
         opacity: 100%;
     }
+
+    /* delete */
+    .bbb {
+        display: inline-block;
+    }
 </style>
 
 <div id="app">
@@ -85,7 +90,7 @@
             </a>
     </div>
 
-    <div class="block1">
+    <div class="block1 bbb">
         <h2 class="block2">Общие</h2>
 
         <!--  выбор цвета пружины  -->
@@ -120,7 +125,7 @@
         </div>
     </div>
 
-    <div class="block1">
+    <div class="block1 bbb">
         <h2 class="block2">Блок</h2>
 
         <!--  ввод количества страниц  -->
@@ -142,7 +147,7 @@
 
         <!--  цветность  -->
         <div>
-            <h2>Цветность (сам лист + отиск):</h2>
+            <h2>Цветность:</h2>
             <div class="page_color" v-for="page_color in page_colors">
                 <label>
                     <input type="radio" v-bind:value="page_color" v-model="select_page_color">
@@ -172,7 +177,7 @@
         </div>
     </div>
 
-    <div class="block1">
+    <div class="block1 bbb">
         <h2 class="block2">Обложка</h2>
         <button v-if="has_cover" v-on:click="has_cover = false">Убрать обложку</button>
         <button v-else v-on:click="has_cover = true">Добавить обложку</button>
@@ -180,7 +185,7 @@
         <div v-show="has_cover">
             <!--  цветность обложки  -->
             <div>
-                <h2>Цветность обложки:</h2>
+                <h2>Цветность:</h2>
                 <div class="cover_color" v-for="cover_color in cover_colors">
                     <label>
                         <input type="radio" v-bind:value="cover_color" v-model="select_cover_color">
