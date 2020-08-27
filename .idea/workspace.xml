@@ -20,7 +20,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="890b8ba2-2826-4816-bc4b-9f41abe34d58" name="Default Changelist" comment="clear">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -67,7 +66,7 @@
       <workItem from="1598024389934" duration="2213000" />
       <workItem from="1598166769675" duration="390000" />
       <workItem from="1598180678360" duration="11444000" />
-      <workItem from="1598540932178" duration="7598000" />
+      <workItem from="1598540932178" duration="7917000" />
     </task>
     <task id="LOCAL-00001" summary="add first selector">
       <created>1598546621259</created>
@@ -90,7 +89,14 @@
       <option name="project" value="LOCAL" />
       <updated>1598549844707</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="clear">
+      <created>1598550799425</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1598550799425</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -117,10 +123,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="922" y="188" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1598540992591" />
-    <state x="986" y="276" key="Vcs.Push.Dialog.v2" timestamp="1598549845977">
+    <state x="970" y="48" key="Vcs.Push.Dialog.v2" timestamp="1598550802313">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="986" y="276" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1598549845977" />
+    <state x="970" y="48" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1598550802313" />
     <state x="1068" y="167" width="770" height="780" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1598188422422">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
