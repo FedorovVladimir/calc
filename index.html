@@ -76,23 +76,21 @@
     <!--  выбор крепления  -->
     <div>
         <h2>Выберите тип крепления</h2>
-            <a class="select-type-a" v-on:click="select_type='Скоба'" v-bind:class="{ active: isBracket }">
-                <p>Скоба</p>
-                <img class="select-type-img" src="img/rect1.png" alt="Скоба">
-            </a>
-            <a class="select-type-a" v-on:click="select_type='Пружина'" v-bind:class="{ active: isSpring }">
-                <p>Пружина</p>
-                <img class="select-type-img" src="img/rect2.png" alt="Пружина">
-            </a>
-            <a class="select-type-a" v-on:click="select_type='Клей'" v-bind:class="{ active: isGlue }">
-                <p>Клей</p>
-                <img class="select-type-img" src="img/rect3.png" alt="Клей">
-            </a>
+        <a class="select-type-a" v-on:click="select_type='Скоба'" v-bind:class="{ active: isBracket }">
+            <p>Скоба</p>
+            <img class="select-type-img" src="img/rect1.png" alt="Скоба">
+        </a>
+        <a class="select-type-a" v-on:click="select_type='Пружина'" v-bind:class="{ active: isSpring }">
+            <p>Пружина</p>
+            <img class="select-type-img" src="img/rect2.png" alt="Пружина">
+        </a>
+        <a class="select-type-a" v-on:click="select_type='Клей'" v-bind:class="{ active: isGlue }">
+            <p>Клей</p>
+            <img class="select-type-img" src="img/rect3.png" alt="Клей">
+        </a>
     </div>
 
-    <div class="block1 bbb">
-        <h2 class="block2">Общие</h2>
-
+    <div class="block1">
         <!--  выбор цвета пружины  -->
         <div v-show="isSpring">
             <h2>Выберите цвет пружины</h2>
@@ -122,74 +120,38 @@
                     </select>
                 </label>
             </div>
-        </div>
-    </div>
-
-    <div class="block1 bbb">
-        <h2 class="block2">Блок</h2>
-
-        <!--  ввод количества страниц  -->
-        <div>
-            <h2>Количество страниц:</h2>
-            <label>
-                <div v-if="isBracket">
-                    <select v-model="page_count">
-                        <option v-for="page in bracket_page_list">{{ page }}</option>
-                    </select>
-                </div>
-                <div v-else>
-                    <select v-model="page_count">
-                        <option v-for="page in page_list">{{ page }}</option>
-                    </select>
-                </div>
-            </label>
-        </div>
-
-        <!--  цветность  -->
-        <div>
-            <h2>Цветность:</h2>
-            <div class="page_color" v-for="page_color in page_colors">
+            <div v-show="isCustomFormat">
+                <h2>Ширина:</h2>
                 <label>
-                    <input type="radio" v-bind:value="page_color" v-model="select_page_color">
-                    {{ page_color }}
+                    <input type="number" v-model="page_width">
+                </label>
+            </div>
+            <div v-show="isCustomFormat">
+                <h2>Высота:</h2>
+                <label>
+                    <input type="number" v-model="page_height">
                 </label>
             </div>
         </div>
 
-        <!--  материал  -->
-        <div>
-            <h2>Материал</h2>
-            <label>
-                <select v-model="select_page_type">
-                    <option v-for="page_type in page_types">{{ page_type }}</option>
-                </select>
-            </label>
-        </div>
+        <div class="block1 bbb">
+            <h2 class="block2">Блок</h2>
 
-        <!--  ламинация  -->
-        <div>
-            <h2>Ламинация</h2>
-            <label>
-                <select v-model="select_cover_lamination_block">
-                    <option v-for="cover_lamination in cover_laminations">{{ cover_lamination }}</option>
-                </select>
-            </label>
-        </div>
-    </div>
+            <!--  ввод количества страниц  -->
+            <div>
+                <h2>Количество страниц:</h2>
+                <label>
+                    <input type="number" v-model="page_count">
+                </label>
+            </div>
 
-    <div class="block1 bbb">
-        <h2 class="block2">Обложка</h2>
-        <button v-if="has_cover" v-on:click="has_cover = false">Убрать обложку</button>
-        <button v-else v-on:click="has_cover = true">Добавить обложку</button>
-
-        <div v-show="has_cover">
-            <!--  цветность обложки  -->
+            <!--  цветность  -->
             <div>
                 <h2>Цветность:</h2>
-                <div class="cover_color" v-for="cover_color in cover_colors">
+                <div class="page_color" v-for="page_color in page_colors">
                     <label>
-                        <input type="radio" v-bind:value="cover_color" v-model="select_cover_color">
-                        {{ cover_color }}
+                        <input type="radio" v-bind:value="page_color" v-model="select_page_color">
+                        {{ page_color }}
                     </label>
                 </div>
             </div>
@@ -198,8 +160,8 @@
             <div>
                 <h2>Материал</h2>
                 <label>
-                    <select v-model="select_cover_type">
-                        <option v-for="cover_type in cover_types">{{ cover_type }}</option>
+                    <select v-model="select_page_type">
+                        <option v-for="page_type in page_types">{{ page_type }}</option>
                     </select>
                 </label>
             </div>
@@ -208,17 +170,55 @@
             <div>
                 <h2>Ламинация</h2>
                 <label>
-                    <select v-model="select_cover_lamination">
+                    <select v-model="select_cover_lamination_block">
                         <option v-for="cover_lamination in cover_laminations">{{ cover_lamination }}</option>
                     </select>
                 </label>
             </div>
         </div>
-    </div>
 
-    <div class="block1 bbb">
-        <h2 class="block2">Стоимость</h2>
-    </div>
+        <div class="block1 bbb">
+            <h2 class="block2">Обложка</h2>
+            <button v-if="has_cover" v-on:click="has_cover = false">Убрать обложку</button>
+            <button v-else v-on:click="has_cover = true">Добавить обложку</button>
+
+            <div v-show="has_cover">
+                <!--  цветность обложки  -->
+                <div>
+                    <h2>Цветность:</h2>
+                    <div class="cover_color" v-for="cover_color in cover_colors">
+                        <label>
+                            <input type="radio" v-bind:value="cover_color" v-model="select_cover_color">
+                            {{ cover_color }}
+                        </label>
+                    </div>
+                </div>
+
+                <!--  материал  -->
+                <div>
+                    <h2>Материал</h2>
+                    <label>
+                        <select v-model="select_cover_type">
+                            <option v-for="cover_type in cover_types">{{ cover_type }}</option>
+                        </select>
+                    </label>
+                </div>
+
+                <!--  ламинация  -->
+                <div>
+                    <h2>Ламинация</h2>
+                    <label>
+                        <select v-model="select_cover_lamination">
+                            <option v-for="cover_lamination in cover_laminations">{{ cover_lamination }}</option>
+                        </select>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="block1 bbb">
+            <h2 class="block2">Стоимость</h2>
+        </div>
     </div>
 </div>
 
@@ -242,11 +242,12 @@
                 'A6, Альбом (148 × 105 мм)',
                 'A5, Альбом (210 × 148 мм)',
                 'A4, Альбом (297 × 210 мм)',
-                'A3, Альбом (420 × 297 мм)'
+                'A3, Альбом (420 × 297 мм)',
+                'Свой формат'
             ],
+            page_width: 0,
+            page_height: 0,
             page_count: 8,
-            bracket_page_list: [4, 8, 12, 16, 20, 24, 28, 32, 36, 40],
-            page_list: [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40],
             select_page_color: '4+0',
             page_colors: [
                 '4+0',
@@ -318,6 +319,9 @@
             },
             isGlue: function () {
                 return this.select_type === 'Клей'
+            },
+            isCustomFormat: function () {
+                return this.select_format_orientation === 'Свой формат'
             }
         }
     });
