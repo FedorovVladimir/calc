@@ -53,7 +53,7 @@
 
 <div id="app">
 
-    <!--  Выбор крепления  -->
+    <!--  Крепление  -->
     <div class="class-select-type">
         <h2>Выберите тип крепления</h2>
         <a v-on:click="select_type='Скоба'" v-bind:class="{ class_active: isBracket }">
@@ -72,7 +72,8 @@
 
     <!--  Форма  -->
     <div class="develop_border">
-        <!--  выбор цвета пружины  -->
+
+        <!--  Цвет пружины  -->
         <div v-show="isSpring">
             <h2>Выберите цвет пружины</h2>
             <div v-for="color in colors">
@@ -89,24 +90,26 @@
             <input id="number-id" type="number" v-model="select_printing">
         </div>
 
-        <!--  выбор формата и ориентации  -->
+        <!--  Формата и ориентации  -->
         <div>
             <label for="format-id">Формат и ориентация</label>
             <select id="format-id" v-model="select_format">
-                <option v-for="format_orientation in format_orientations">{{ format_orientation }}</option>
+                <option v-for="format_orientation in format_orientations" v-bind:value="format_orientation">
+                    {{ format_orientation.name }}
+                </option>
             </select>
         </div>
 
         <!--  Ширина  -->
         <div>
             <label for="width-id">Ширина</label>
-            <input id="width-id" type="number" v-model="page_width">
+            <input id="width-id" type="number" v-model="select_format.width" :disabled="!isCustomSize">
         </div>
 
         <!--  Высота  -->
         <div>
             <label for="height-id">Высота</label>
-            <input id="height-id" type="number" v-model="page_height">
+            <input id="height-id" type="number" v-model="select_format.height" :disabled="!isCustomSize">
         </div>
 
 
@@ -120,7 +123,7 @@
                 <input id="count-id" type="number" v-model="page_count">
             </div>
 
-            <!--  цветность  -->
+            <!--  Цветность  -->
             <div>
                 <label for="page_color-id">Цветность</label>
                 <select id="page_color-id" v-model="select_page_color">
@@ -128,7 +131,7 @@
                 </select>
             </div>
 
-            <!--  материал  -->
+            <!--  Материал  -->
             <div>
                 <label for="page_type-id">Материал</label>
                 <select id="page_type-id" v-model="select_page_type">
@@ -136,7 +139,7 @@
                 </select>
             </div>
 
-            <!--  ламинация  -->
+            <!--  Ламинация  -->
             <div>
                 <label for="page_lamination-id">Ламинация</label>
                 <select id="page_lamination-id" v-model="select_page_lamination">
@@ -152,8 +155,9 @@
             <button v-if="has_cover" v-on:click="has_cover = false">Убрать обложку</button>
             <button v-else v-on:click="has_cover = true">Добавить обложку</button>
 
+            <!--  Обложка  -->
             <div v-show="has_cover">
-                <!--  цветность обложки  -->
+                <!--  Цветность обложки  -->
                 <div>
                     <label for="cover_color-id">Цветность</label>
                     <select id="cover_color-id" v-model="select_cover_color">
@@ -161,7 +165,7 @@
                     </select>
                 </div>
 
-                <!--  материал  -->
+                <!--  Материал  -->
                 <div>
                     <label for="cover_type-id">Материал</label>
                     <select id="cover_type-id" v-model="select_cover_type">
@@ -169,7 +173,7 @@
                     </select>
                 </div>
 
-                <!--  ламинация  -->
+                <!--  Ламинация  -->
                 <div>
                     <label for="cover_lamination-id">Ламинация</label>
                     <select id="cover_lamination-id" v-model="select_cover_lamination">
@@ -199,20 +203,18 @@
                 'Черная',
                 'Серебро'
             ],
-            select_format: 'Книга, A6 (105 × 148 мм)',
+            select_format: {name: 'Книга, A6 (105 × 148 мм)', width: 105, height: 148},
             format_orientations: [
-                'Книга, A6 (105 × 148 мм)',
-                'Книга, A5 (148 × 210 мм)',
-                'Книга, A4 (210 × 297 мм)',
-                'Книга, A3 (297 × 420 мм)',
-                'Альбом, A6 (148 × 105 мм)',
-                'Альбом, A5 (210 × 148 мм)',
-                'Альбом, A4 (297 × 210 мм)',
-                'Альбом, A3 (420 × 297 мм)',
-                'Свой формат'
+                {name: 'Книга, A6 (105 × 148 мм)', width: 105, height: 148},
+                {name: 'Книга, A5 (105 × 148 мм)', width: 148, height: 210},
+                {name: 'Книга, A4 (105 × 148 мм)', width: 210, height: 297},
+                {name: 'Книга, A3 (105 × 148 мм)', width: 297, height: 420},
+                {name: 'Альбом, A6 (148 × 105 мм)', width: 148, height: 105},
+                {name: 'Альбом, A5 (148 × 105 мм)', width: 210, height: 148},
+                {name: 'Альбом, A4 (148 × 105 мм)', width: 297, height: 210},
+                {name: 'Альбом, A3 (148 × 105 мм)', width: 420, height: 297},
+                {name: 'Свой формат', width: 100, height: 100}
             ],
-            page_width: 0,
-            page_height: 0,
             page_count: 8,
             select_page_color: '4+0',
             page_colors: [
@@ -287,7 +289,7 @@
                 return this.select_type === 'Клей'
             },
             isCustomSize: function () {
-                return this.select_format == 'Свой формат'
+                return this.select_format.name === 'Свой формат'
             }
         }
     });
