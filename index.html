@@ -96,13 +96,12 @@
         <div class="all">
             <!--  Цвет пружины  -->
             <div v-show="isSpring">
-                <h2>Выберите цвет пружины</h2>
-                <div v-for="color in colors">
-                    <label>
-                        <input type="radio" v-bind:value="color" v-model="select_color">
+                <div><label class="my-label" for="color-id">Цвет пружины</label></div>
+                <select id="color-id" class="my-input" v-model="select_color">
+                    <option v-for="color in colors" v-model="select_color">
                         {{ color }}
-                    </label>
-                </div>
+                    </option>
+                </select>
             </div>
 
             <!--  тираж  -->
