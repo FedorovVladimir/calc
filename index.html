@@ -246,7 +246,6 @@
     new Vue({
         el: '#app',
         data: {
-            coins: 0,
             select_type: 'Скоба',
             select_color: 'Белая',
             colors: [
@@ -341,6 +340,9 @@
             },
             isCustomSize: function () {
                 return this.select_format.name === 'Свой формат'
+            },
+            coins: function () {
+                return this.select_printing
             }
         }
     });
