@@ -19,7 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="890b8ba2-2826-4816-bc4b-9f41abe34d58" name="Default Changelist" comment="add coins">
+    <list default="true" id="890b8ba2-2826-4816-bc4b-9f41abe34d58" name="Default Changelist" comment="add change wight and height">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
@@ -70,7 +70,7 @@
       <workItem from="1598540932178" duration="8047000" />
       <workItem from="1598551332564" duration="276000" />
       <workItem from="1598630768514" duration="2706000" />
-      <workItem from="1598679307659" duration="10288000" />
+      <workItem from="1598679307659" duration="10856000" />
     </task>
     <task id="LOCAL-00001" summary="add first selector">
       <created>1598546621259</created>
@@ -142,7 +142,14 @@
       <option name="project" value="LOCAL" />
       <updated>1598692602069</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="add change wight and height">
+      <created>1598695185630</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1598695185630</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,7 +174,8 @@
     <MESSAGE value="add bootstrap" />
     <MESSAGE value="clear" />
     <MESSAGE value="add coins" />
-    <option name="LAST_COMMIT_MESSAGE" value="add coins" />
+    <MESSAGE value="add change wight and height" />
+    <option name="LAST_COMMIT_MESSAGE" value="add change wight and height" />
   </component>
   <component name="WindowStateProjectService">
     <state x="583" y="185" width="1233" height="737" key="SettingsEditor" timestamp="1598693257697">
@@ -175,15 +183,15 @@
     </state>
     <state x="922" y="188" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1598540992591" />
     <state x="583" y="185" width="1233" height="737" key="SettingsEditor/72.27.1848.1053@72.27.1848.1053" timestamp="1598693257697" />
-    <state x="1010" y="218" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1598692603282">
+    <state x="1010" y="218" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1598695186795">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="975" y="196" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1598551520254" />
-    <state x="1010" y="218" width="800" height="535" key="Vcs.Push.Dialog.v2/72.27.1848.1053@72.27.1848.1053" timestamp="1598692603282" />
-    <state x="1068" y="167" width="770" height="780" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1598686252421">
+    <state x="1010" y="218" width="800" height="535" key="Vcs.Push.Dialog.v2/72.27.1848.1053@72.27.1848.1053" timestamp="1598695186795" />
+    <state x="1068" y="167" width="770" height="780" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1598695369429">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state x="1068" y="167" width="770" height="780" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/72.27.1848.1053@72.27.1848.1053" timestamp="1598686252421" />
+    <state x="1068" y="167" width="770" height="780" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/72.27.1848.1053@72.27.1848.1053" timestamp="1598695369429" />
     <state x="2580" y="252" key="run.anything.popup" timestamp="1598025377103">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
