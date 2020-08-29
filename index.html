@@ -19,7 +19,7 @@
     /* img */
     .class-select-type img {
         height: 130px;
-        margin: 20px;
+        margin: 20px 20px 5px 20px;
     }
 
     /* a */
@@ -27,11 +27,13 @@
         display: inline-block;
         text-align: center;
         opacity: 50%;
+        text-decoration: none;
+        color: black;
     }
 
     /* text */
     .class-select-type p {
-        margin: 20px 0 0 0;
+        margin: 0 0 20px 0;
         padding: 0;
     }
 
@@ -75,16 +77,16 @@
     <div class="class-select-type">
         <h2>Выберите тип крепления</h2>
         <a v-on:click="select_type='Скоба'" v-bind:class="{ class_active: isBracket }">
-            <p>Скоба</p>
             <img src="img/rect1.png" alt="Скоба">
+            <p>Скоба</p>
         </a>
         <a v-on:click="select_type='Пружина'" v-bind:class="{ class_active: isSpring }">
-            <p>Пружина</p>
             <img src="img/rect2.png" alt="Пружина">
+            <p>Пружина</p>
         </a>
         <a v-on:click="select_type='Клей'" v-bind:class="{ class_active: isGlue }">
-            <p>Клей</p>
             <img src="img/rect3.png" alt="Клей">
+            <p>Клей</p>
         </a>
     </div>
 

@@ -70,7 +70,7 @@
       <workItem from="1598540932178" duration="8047000" />
       <workItem from="1598551332564" duration="276000" />
       <workItem from="1598630768514" duration="2706000" />
-      <workItem from="1598679307659" duration="10856000" />
+      <workItem from="1598679307659" duration="11233000" />
     </task>
     <task id="LOCAL-00001" summary="add first selector">
       <created>1598546621259</created>
@@ -149,7 +149,14 @@
       <option name="project" value="LOCAL" />
       <updated>1598695185630</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="add change wight and height">
+      <created>1598695752381</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1598695752381</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -183,11 +190,11 @@
     </state>
     <state x="922" y="188" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1598540992591" />
     <state x="583" y="185" width="1233" height="737" key="SettingsEditor/72.27.1848.1053@72.27.1848.1053" timestamp="1598693257697" />
-    <state x="1010" y="218" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1598695186795">
+    <state x="1010" y="218" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1598695753504">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="975" y="196" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1598551520254" />
-    <state x="1010" y="218" width="800" height="535" key="Vcs.Push.Dialog.v2/72.27.1848.1053@72.27.1848.1053" timestamp="1598695186795" />
+    <state x="1010" y="218" width="800" height="535" key="Vcs.Push.Dialog.v2/72.27.1848.1053@72.27.1848.1053" timestamp="1598695753504" />
     <state x="1068" y="167" width="770" height="780" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1598695369429">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
