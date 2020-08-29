@@ -19,7 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="890b8ba2-2826-4816-bc4b-9f41abe34d58" name="Default Changelist" comment="add custom size">
+    <list default="true" id="890b8ba2-2826-4816-bc4b-9f41abe34d58" name="Default Changelist" comment="add bootstrap">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
@@ -53,7 +53,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -70,7 +70,7 @@
       <workItem from="1598540932178" duration="8047000" />
       <workItem from="1598551332564" duration="276000" />
       <workItem from="1598630768514" duration="2706000" />
-      <workItem from="1598679307659" duration="59000" />
+      <workItem from="1598679307659" duration="6072000" />
     </task>
     <task id="LOCAL-00001" summary="add first selector">
       <created>1598546621259</created>
@@ -121,7 +121,14 @@
       <option name="project" value="LOCAL" />
       <updated>1598633020948</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="add bootstrap">
+      <created>1598679392980</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1598679392980</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -145,22 +152,24 @@
     <MESSAGE value="add coins" />
     <MESSAGE value="add sizes" />
     <MESSAGE value="add custom size" />
-    <option name="LAST_COMMIT_MESSAGE" value="add custom size" />
+    <MESSAGE value="add bootstrap" />
+    <option name="LAST_COMMIT_MESSAGE" value="add bootstrap" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="922" y="188" key="SettingsEditor" timestamp="1598540992591">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="898" y="210" width="1022" height="737" key="SettingsEditor" timestamp="1598686206797">
+      <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="922" y="188" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1598540992591" />
-    <state x="1010" y="218" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1598633022621">
+    <state x="898" y="210" width="1022" height="737" key="SettingsEditor/72.27.1848.1053@72.27.1848.1053" timestamp="1598686206797" />
+    <state x="1010" y="218" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1598679397440">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="975" y="196" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1598551520254" />
-    <state x="1010" y="218" width="800" height="535" key="Vcs.Push.Dialog.v2/72.27.1848.1053@72.27.1848.1053" timestamp="1598633022621" />
-    <state x="1068" y="167" width="770" height="780" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1598188422422">
+    <state x="1010" y="218" width="800" height="535" key="Vcs.Push.Dialog.v2/72.27.1848.1053@72.27.1848.1053" timestamp="1598679397440" />
+    <state x="1068" y="167" width="770" height="780" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1598686252421">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state x="1068" y="167" width="770" height="780" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/72.27.1848.1053@72.27.1848.1053" timestamp="1598188422422" />
+    <state x="1068" y="167" width="770" height="780" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/72.27.1848.1053@72.27.1848.1053" timestamp="1598686252421" />
     <state x="2580" y="252" key="run.anything.popup" timestamp="1598025377103">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
