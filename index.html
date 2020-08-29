@@ -55,7 +55,7 @@
 
     /* inputs */
     .my-input {
-        width: 250px;
+        width: 100%;
         height: 32px;
     }
 
@@ -67,9 +67,9 @@
 
     /* all */
     .all {
-        margin: 10px;
         display: inline-block;
-        border: cadetblue 1px solid;
+        margin-top: 20px;
+        /*border: cadetblue 1px solid;*/
     }
 </style>
 
@@ -101,7 +101,7 @@
         <div class="row">
 
             <!--  Общие  -->
-            <div class="col-sm all">
+            <div class="col-md-4 all">
                 <h2>Общие</h2>
 
                 <!--  Цвет пружины  -->
@@ -148,7 +148,7 @@
 
 
             <!--  Блок  -->
-            <div class="col-sm all">
+            <div class="col-md-4 all">
                 <h2>Блок</h2>
 
                 <!--  ввод количества страниц  -->
@@ -184,7 +184,7 @@
 
 
             <!--  Обложка  -->
-            <div class="col-sm all">
+            <div class="col-md-4 all">
                 <h2>Обложка</h2>
 
                 <div>
@@ -224,9 +224,13 @@
 
 
     <!--  Стоимость  -->
-    <div>
-        <h2>Стоимость</h2>
-        {{ coins }}
+    <div class="container">
+        <div class="row">
+            <div class="all">
+                <h2>Стоимость</h2>
+                {{ coins }}
+            </div>
+        </div>
     </div>
 </div>
 
