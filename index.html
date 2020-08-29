@@ -46,14 +46,14 @@
     }
 
 
-    /*div {*/
-    /*    border: cadetblue 1px solid;*/
-    /*}*/
+    .develop_border {
+        border: cadetblue 1px solid;
+    }
 </style>
 
 <div id="app">
 
-    <!--  выбор крепления  -->
+    <!--  Выбор крепления  -->
     <div class="class-select-type">
         <h2>Выберите тип крепления</h2>
         <a v-on:click="select_type='Скоба'" v-bind:class="{ class_active: isBracket }">
@@ -70,7 +70,8 @@
         </a>
     </div>
 
-    <div>
+    <!--  Форма  -->
+    <div class="develop_border">
         <!--  выбор цвета пружины  -->
         <div v-show="isSpring">
             <h2>Выберите цвет пружины</h2>
@@ -91,7 +92,7 @@
         <!--  выбор формата и ориентации  -->
         <div>
             <label for="format-id">Формат и ориентация</label>
-            <select id="format-id" v-model="select_format_orientation">
+            <select id="format-id" v-model="select_format">
                 <option v-for="format_orientation in format_orientations">{{ format_orientation }}</option>
             </select>
         </div>
@@ -110,7 +111,7 @@
 
 
         <!--  Блок  -->
-        <div>
+        <div class="develop_border">
             <h2>Блок</h2>
 
             <!--  ввод количества страниц  -->
@@ -145,7 +146,7 @@
         </div>
 
         <!--  Обложка  -->
-        <div>
+        <div class="develop_border">
             <h2>Обложка</h2>
 
             <button v-if="has_cover" v-on:click="has_cover = false">Убрать обложку</button>
@@ -181,6 +182,7 @@
         <!--  Стоимость  -->
         <div>
             <h2>Стоимость</h2>
+            {{ coins }}
         </div>
     </div>
 </div>
@@ -189,6 +191,7 @@
     new Vue({
         el: '#app',
         data: {
+            coins: 0,
             select_type: 'Скоба',
             select_color: 'Белая',
             colors: [
@@ -196,16 +199,16 @@
                 'Черная',
                 'Серебро'
             ],
-            select_format_orientation: 'A6, Книга (105 × 148 мм)',
+            select_format: 'Книга, A6 (105 × 148 мм)',
             format_orientations: [
-                'A6, Книга (105 × 148 мм)',
-                'A5, Книга (148 × 210 мм)',
-                'A4, Книга (210 × 297 мм)',
-                'A3, Книга (297 × 420 мм)',
-                'A6, Альбом (148 × 105 мм)',
-                'A5, Альбом (210 × 148 мм)',
-                'A4, Альбом (297 × 210 мм)',
-                'A3, Альбом (420 × 297 мм)',
+                'Книга, A6 (105 × 148 мм)',
+                'Книга, A5 (148 × 210 мм)',
+                'Книга, A4 (210 × 297 мм)',
+                'Книга, A3 (297 × 420 мм)',
+                'Альбом, A6 (148 × 105 мм)',
+                'Альбом, A5 (210 × 148 мм)',
+                'Альбом, A4 (297 × 210 мм)',
+                'Альбом, A3 (420 × 297 мм)',
                 'Свой формат'
             ],
             page_width: 0,
@@ -282,6 +285,9 @@
             },
             isGlue: function () {
                 return this.select_type === 'Клей'
+            },
+            isCustomSize: function () {
+                return this.select_format == 'Свой формат'
             }
         }
     });
