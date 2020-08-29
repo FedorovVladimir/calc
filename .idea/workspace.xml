@@ -19,7 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="890b8ba2-2826-4816-bc4b-9f41abe34d58" name="Default Changelist" comment="add sizes">
+    <list default="true" id="890b8ba2-2826-4816-bc4b-9f41abe34d58" name="Default Changelist" comment="add custom size">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
@@ -69,7 +69,8 @@
       <workItem from="1598180678360" duration="11444000" />
       <workItem from="1598540932178" duration="8047000" />
       <workItem from="1598551332564" duration="276000" />
-      <workItem from="1598630768514" duration="1825000" />
+      <workItem from="1598630768514" duration="2706000" />
+      <workItem from="1598679307659" duration="59000" />
     </task>
     <task id="LOCAL-00001" summary="add first selector">
       <created>1598546621259</created>
@@ -113,7 +114,14 @@
       <option name="project" value="LOCAL" />
       <updated>1598551518452</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="add custom size">
+      <created>1598633020948</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1598633020948</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -136,17 +144,19 @@
     <MESSAGE value="clear" />
     <MESSAGE value="add coins" />
     <MESSAGE value="add sizes" />
-    <option name="LAST_COMMIT_MESSAGE" value="add sizes" />
+    <MESSAGE value="add custom size" />
+    <option name="LAST_COMMIT_MESSAGE" value="add custom size" />
   </component>
   <component name="WindowStateProjectService">
     <state x="922" y="188" key="SettingsEditor" timestamp="1598540992591">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="922" y="188" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1598540992591" />
-    <state x="975" y="196" key="Vcs.Push.Dialog.v2" timestamp="1598551520254">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="1010" y="218" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1598633022621">
+      <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="975" y="196" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1598551520254" />
+    <state x="1010" y="218" width="800" height="535" key="Vcs.Push.Dialog.v2/72.27.1848.1053@72.27.1848.1053" timestamp="1598633022621" />
     <state x="1068" y="167" width="770" height="780" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1598188422422">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
