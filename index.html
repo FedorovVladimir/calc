@@ -63,6 +63,8 @@
     /* all */
     .all {
         margin: 20px;
+        display: inline-block;
+        border: cadetblue 1px solid;
     }
 
 
@@ -75,7 +77,6 @@
 
     <!--  Крепление  -->
     <div class="class-select-type">
-        <h2>Выберите тип крепления</h2>
         <a v-on:click="select_type='Скоба'" v-bind:class="{ class_active: isBracket }">
             <img src="img/rect1.png" alt="Скоба">
             <p>Скоба</p>
@@ -94,6 +95,8 @@
     <div class="develop_border">
 
         <div class="all">
+            <h2>Общие</h2>
+
             <!--  Цвет пружины  -->
             <div v-show="isSpring">
                 <div><label class="my-label" for="color-id">Цвет пружины</label></div>
@@ -137,35 +140,35 @@
 
 
         <!--  Блок  -->
-        <div class="develop_border">
+        <div class="all">
             <h2>Блок</h2>
 
             <!--  ввод количества страниц  -->
             <div>
-                <label for="count-id">Количество страниц</label>
-                <input id="count-id" type="number" v-model="page_count">
+                <div><label class="my-label" for="count-id">Количество страниц</label></div>
+                <input id="count-id" class="my-input" type="number" v-model="page_count"> шт
             </div>
 
             <!--  Цветность  -->
             <div>
-                <label for="page_color-id">Цветность</label>
-                <select id="page_color-id" v-model="select_page_color">
+                <div><label class="my-label" for="page_color-id">Цветность</label></div>
+                <select id="page_color-id" class="my-input" v-model="select_page_color">
                     <option v-for="page_color in page_colors">{{ page_color }}</option>
                 </select>
             </div>
 
             <!--  Материал  -->
             <div>
-                <label for="page_type-id">Материал</label>
-                <select id="page_type-id" v-model="select_page_type">
+                <div><label class="my-label" for="page_type-id">Материал</label></div>
+                <select id="page_type-id" class="my-input" v-model="select_page_type">
                     <option v-for="page_type in page_types">{{ page_type }}</option>
                 </select>
             </div>
 
             <!--  Ламинация  -->
             <div>
-                <label for="page_lamination-id">Ламинация</label>
-                <select id="page_lamination-id" v-model="select_page_lamination">
+                <div><label class="my-label" for="page_lamination-id">Ламинация</label></div>
+                <select id="page_lamination-id" class="my-input" v-model="select_page_lamination">
                     <option v-for="lamination in laminations">{{ lamination }}</option>
                 </select>
             </div>
@@ -206,6 +209,7 @@
                 </div>
             </div>
         </div>
+
 
         <!--  Стоимость  -->
         <div>
