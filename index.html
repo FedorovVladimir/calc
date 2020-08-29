@@ -128,22 +128,22 @@
 
                 <!--  тираж  -->
                 <div>
-                    <div><label class="my-label" for="number-id">Тираж</label></div>
-                    <input id="number-id" class="my-input" type="number" v-model="select_printing"> шт
+                    <div><label class="my-label" for="number-id">Тираж (шт)</label></div>
+                    <input id="number-id" class="my-input" type="number" v-model="select_printing">
                 </div>
 
                 <!--  Ширина  -->
                 <div>
-                    <div><label class="my-label" for="width-id">Ширина</label></div>
+                    <div><label class="my-label" for="width-id">Ширина (мм)</label></div>
                     <input id="width-id" class="my-input" type="number" v-model="select_format.width"
-                           :disabled="!isCustomSize"> мм
+                           :disabled="!isCustomSize">
                 </div>
 
                 <!--  Высота  -->
                 <div>
-                    <div><label class="my-label" for="height-id">Высота</label></div>
+                    <div><label class="my-label" for="height-id">Высота (мм)</label></div>
                     <input id="height-id" class="my-input" type="number" v-model="select_format.height"
-                           :disabled="!isCustomSize"> мм
+                           :disabled="!isCustomSize">
                 </div>
 
                 <!--  Формата и ориентации  -->
@@ -165,8 +165,8 @@
 
                 <!--  ввод количества страниц  -->
                 <div>
-                    <div><label class="my-label" for="count-id">Количество страниц</label></div>
-                    <input id="count-id" class="my-input" type="number" v-model="page_count"> шт
+                    <div><label class="my-label" for="count-id">Количество страниц (шт)</label></div>
+                    <input id="count-id" class="my-input" type="number" v-model="page_count">
                 </div>
 
                 <!--  Цветность  -->
@@ -192,13 +192,23 @@
                         <option v-for="lamination in laminations">{{ lamination }}</option>
                     </select>
                 </div>
+
+                <!--  Ламнация  -->
+                <div v-show="hasLaminationsPage">
+                    <div><label class="my-label" for="page_laminations_type-id">Тип ламинации</label></div>
+                    <select id="page_laminations_type-id" class="my-input" v-model="select_page_laminations_type">
+                        <option v-for="laminations_type in laminations_types">{{ laminations_type }}</option>
+                    </select>
+                </div>
             </div>
 
 
             <!--  Обложка  -->
             <div class="col-sm-6 col-md-4 col-lg-3 all">
                 <div class="button-block">
-                    <button class="my-button btn btn-outline-secondary" v-if="has_cover" v-on:click="has_cover = false">x</button>
+                    <button class="my-button btn btn-outline-secondary" v-if="has_cover" v-on:click="has_cover = false">
+                        x
+                    </button>
                     <button class="my-button btn btn-outline-secondary" v-else v-on:click="has_cover = true">+</button>
                 </div>
                 <h2>Обложка</h2>
@@ -227,6 +237,14 @@
                         <div><label class="my-label" for="cover_lamination-id">Ламинация</label></div>
                         <select id="cover_lamination-id" class="my-input" v-model="select_cover_lamination">
                             <option v-for="lamination in laminations">{{ lamination }}</option>
+                        </select>
+                    </div>
+
+                    <!--  Ламнация  -->
+                    <div v-show="hasLaminationsCover">
+                        <div><label class="my-label" for="cover_laminations_type-id">Тип ламинации</label></div>
+                        <select id="cover_laminations_type-id" class="my-input" v-model="select_cover_laminations_type">
+                            <option v-for="laminations_type in laminations_types">{{ laminations_type }}</option>
                         </select>
                     </div>
                 </div>
@@ -326,6 +344,12 @@
                 'Ламинация soft tach',
                 'Прозрачный пластик'
             ],
+            select_cover_laminations_type: '1+0',
+            select_page_laminations_type: '1+0',
+            laminations_types: [
+                '1+0',
+                '1+1'
+            ],
             has_cover: true
         },
         computed: {
@@ -343,6 +367,12 @@
             },
             coins: function () {
                 return this.select_printing
+            },
+            hasLaminationsCover: function () {
+                return this.select_cover_lamination !== 'Без ламинации'
+            },
+            hasLaminationsPage: function () {
+                return this.select_page_lamination !== 'Без ламинации'
             }
         }
     });
