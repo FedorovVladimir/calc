@@ -71,6 +71,18 @@
         margin-top: 20px;
         /*border: cadetblue 1px solid;*/
     }
+
+
+    /* buttons */
+    .my-button {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    .button-block {
+        position: relative;
+    }
 </style>
 
 <div id="app">
@@ -101,7 +113,7 @@
         <div class="row">
 
             <!--  Общие  -->
-            <div class="col-md-3 all">
+            <div class="col-sm-6 col-md-4 col-lg-3 all">
                 <h2>Общие</h2>
 
                 <!--  Цвет пружины  -->
@@ -148,7 +160,7 @@
 
 
             <!--  Блок  -->
-            <div class="col-md-3 all">
+            <div class="col-sm-6 col-md-4 col-lg-3 all">
                 <h2>Блок</h2>
 
                 <!--  ввод количества страниц  -->
@@ -184,13 +196,13 @@
 
 
             <!--  Обложка  -->
-            <div class="col-md-3 all">
+            <div class="col-sm-6 col-md-4 col-lg-3 all">
+                <div class="button-block">
+                    <button class="my-button btn btn-outline-secondary" v-if="has_cover" v-on:click="has_cover = false">x</button>
+                    <button class="my-button btn btn-outline-secondary" v-else v-on:click="has_cover = true">+</button>
+                </div>
                 <h2>Обложка</h2>
 
-                <div>
-                    <button v-if="has_cover" v-on:click="has_cover = false">Убрать обложку</button>
-                    <button v-else v-on:click="has_cover = true">Добавить обложку</button>
-                </div>
 
                 <!--  Обложка  -->
                 <div v-show="has_cover">
@@ -222,7 +234,7 @@
 
 
             <!--  Стоимость  -->
-            <div class="col-md-3 all">
+            <div class="col-sm-6 col-lg-3 all">
                 <h2>Стоимость</h2>
                 {{ coins }} руб
             </div>
