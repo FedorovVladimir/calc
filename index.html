@@ -90,6 +90,15 @@
     span {
         color: gray;
     }
+
+    h2 {
+        color: gray;
+        font-size: 16pt;
+    }
+
+    /*.paint {*/
+    /*    text-align: center;*/
+    /*}*/
 </style>
 
 <div id="app">
@@ -179,7 +188,7 @@
                     <div>
                         <div><label class="my-label" for="page_type-id">Материал</label></div>
                         <select id="page_type-id" class="my-input" v-model="select_page_material">
-                            <option v-for="material in materials">{{ material }}</option>
+                            <option v-for="material in materials" v-bind:value="material">{{ material.name }}</option>
                         </select>
 
                         <div><label class="my-label" for="page_color-id">Цветность</label></div>
@@ -228,7 +237,8 @@
                             </select>
                             <div><label class="my-label" for="cover_type-id">Материал</label></div>
                             <select id="cover_type-id" class="my-input" v-model="select_cover_material">
-                                <option v-for="material in materials">{{ material }}</option>
+                                <option v-for="material in materials" v-bind:value="material">{{ material.name }}
+                                </option>
                             </select>
                         </div>
 
@@ -255,24 +265,29 @@
 
             <!--  Стоимость и информация  -->
             <div class="col-md-4 all">
+
                 <div class="all2">
                     <h2>Стоимость</h2>
-                    <div>Итого: {{ coins }} руб</div>
+                    <div><span>Стоимость блока:</span> {{ coins_pages }}$</div>
+                    <div><span>Стоимость обложки:</span> {{ coins_cover }}$</div>
+                    <div><span>Тираж:</span> {{ select_printing }}шт</div>
+                    <div><span>Итого:</span> {{ coins }}$</div>
                 </div>
+
                 <div class="all2">
                     <h2>Информация</h2>
-                    <br><span>Общие</span>
+                    <span>Общие</span>
                     <div><span>Крепление:</span> {{ select_type }}</div>
                     <div v-show="isSpring"><span>Цвет пружины:</span> {{ select_spring_color }}</div>
-                    <div><span>Тираж:</span> {{ select_printing }}шт</div>
-                    <div><span>Размеры:</span> {{ select_format.width }}мм x {{ select_format.height }}мм
+                    <div v-show="isCustomSize"><span>Размеры:</span> {{ select_format.width }}мм x
+                        {{ select_format.height }}мм
                         ({{ getWidth }} x {{ getHeight }})
                     </div>
                     <div><span>Формат:</span> {{ select_format.name }}</div>
 
                     <br><span>Блок</span>
                     <div><span>Количество страниц:</span> {{ select_page_count }}шт</div>
-                    <div><span>Материал:</span> {{ select_page_material }}</div>
+                    <div><span>Материал:</span> {{ select_page_material.name }}</div>
                     <div><span>Цветность:</span> {{ select_page_color }}</div>
                     <div v-show="hasLaminationsPage"><span>Ламинация:</span> {{ select_page_lamination }}
                         ({{ select_page_laminations_type }})
@@ -280,13 +295,19 @@
 
                     <div v-show="has_cover">
                         <br><span>Обложка</span>
-                        <div><span>Материал:</span> {{ select_cover_material }}</div>
+                        <div><span>Материал:</span> {{ select_cover_material.name }}</div>
                         <div><span>Цветность:</span> {{ select_cover_color }}</div>
                         <div v-show="hasLaminationsCover"><span>Ламинация:</span> {{ select_cover_lamination }}
                             ({{ select_cover_laminations_type }})
                         </div>
                     </div>
                 </div>
+
+                <!--                <div class="all2 paint">-->
+                <!--                    <svg :width="select_format.width/2" :height="select_format.height/2">-->
+                <!--                        <rect width="100%" height="100%" style="fill:rgb(0,0,255);stroke-width:1;stroke:rgb(0,0,0)"/>-->
+                <!--                    </svg>-->
+                <!--                </div>-->
             </div>
         </div>
     </div>
@@ -338,23 +359,23 @@
                 '1+1'
             ],
 
-            select_page_material: 'меловка 130гр', // материал блока
-            select_cover_material: 'меловка 300гр', // материал обложки
+            select_page_material: {name: 'меловка 130 гр/м2', price: 950 * 130 / 1000000}, // материал блока
+            select_cover_material: {name: 'меловка 300 гр/м2', price: 950 * 300 / 1000000}, // материал обложки
             materials: [
-                'офсетка 80гр',
-                'офсетка 100гр',
-                'офсетка 120гр',
-                'офсетка 160гр',
-                'офсетка 180гр',
-                'офсетка 200гр',
-                'меловка 130гр',
-                'меловка 150гр',
-                'меловка 170гр',
-                'меловка 200гр',
-                'меловка 250гр',
-                'меловка 300гр',
-                'картон 270гр',
-                'картон 300гр'
+                {name: 'офсетка 80 гр/м2', price: 1000 * 80 / 1000000}, // $/м2
+                {name: 'офсетка 100 гр/м2', price: 1000 * 100 / 1000000},
+                {name: 'офсетка 120 гр/м2', price: 1000 * 120 / 1000000},
+                {name: 'офсетка 160 гр/м2', price: 1000 * 160 / 1000000},
+                {name: 'офсетка 180 гр/м2', price: 1000 * 180 / 1000000},
+                {name: 'офсетка 200 гр/м2', price: 1000 * 200 / 1000000},
+                {name: 'меловка 130 гр/м2', price: 950 * 130 / 1000000},
+                {name: 'меловка 150 гр/м2', price: 950 * 150 / 1000000},
+                {name: 'меловка 170 гр/м2', price: 950 * 170 / 1000000},
+                {name: 'меловка 200 гр/м2', price: 950 * 200 / 1000000},
+                {name: 'меловка 250 гр/м2', price: 950 * 250 / 1000000},
+                {name: 'меловка 300 гр/м2', price: 950 * 300 / 1000000},
+                {name: 'картон 270 гр/м2', price: 950 * 270 / 1000000},
+                {name: 'картон 300 гр/м2', price: 1000 * 300 / 1000000}
             ],
 
             select_page_lamination: 'Без ламинации', // ламинация блока
@@ -376,7 +397,9 @@
                 '1+1'
             ],
 
-            has_cover: true // наличие обложки
+            has_cover: true, // наличие обложки
+
+            svg_width: 10
         },
         computed: {
             isSpring: function () {
@@ -390,9 +413,6 @@
             },
             isCustomSize: function () {
                 return this.select_format.name === 'Свой формат'
-            },
-            coins: function () {
-                return this.select_printing
             },
             hasLaminationsCover: function () {
                 return this.select_cover_lamination !== 'Без ламинации'
@@ -451,6 +471,18 @@
                     }
                 }
                 return this.select_format.height
+            },
+            coins_pages: function () {
+                sum = this.select_page_count * this.select_page_material.price *
+                    (this.select_format.width / 1000) *
+                    (this.select_format.height / 1000)
+                return Math.round(sum * 100) / 100
+            },
+            coins_cover: function () {
+                return 0
+            },
+            coins: function () {
+                return this.select_printing * (this.coins_pages + this.coins_cover)
             }
         }
     });
