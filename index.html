@@ -68,8 +68,10 @@
     /* all */
     .all {
         display: inline-block;
-        margin-top: 20px;
         /*border: cadetblue 1px solid;*/
+    }
+    .all2 {
+        margin-top: 20px;
     }
 
 
@@ -82,6 +84,10 @@
 
     .button-block {
         position: relative;
+    }
+
+    span {
+        color: gray;
     }
 </style>
 
@@ -113,14 +119,14 @@
         <div class="row">
 
             <!--  Общие  -->
-            <div class="col-sm-6 col-md-4 col-lg-3 all">
+            <div class="col-md-4 all all2">
                 <h2>Общие</h2>
 
                 <!--  Цвет пружины  -->
                 <div v-show="isSpring">
                     <div><label class="my-label" for="color-id">Цвет пружины</label></div>
-                    <select id="color-id" class="my-input" v-model="select_color">
-                        <option v-for="color in colors" v-model="select_color">
+                    <select id="color-id" class="my-input" v-model="select_spring_color">
+                        <option v-for="color in spring_colors" v-model="select_spring_color">
                             {{ color }}
                         </option>
                     </select>
@@ -150,7 +156,7 @@
                 <div>
                     <div><label class="my-label" for="format-id">Формат и ориентация</label></div>
                     <select id="format-id" class="my-input" v-model="select_format">
-                        <option v-for="format_orientation in format_orientations"
+                        <option v-for="format_orientation in formats"
                                 v-bind:value="format_orientation">
                             {{ format_orientation.name }}
                         </option>
@@ -159,102 +165,110 @@
             </div>
 
 
-            <!--  Блок  -->
-            <div class="col-sm-6 col-md-4 col-lg-3 all">
-                <h2>Блок</h2>
+            <!--  Блок и обложка  -->
+            <div class="col-md-4 all">
+                <div class="all2">
+                    <h2>Блок</h2>
 
-                <!--  ввод количества страниц  -->
-                <div>
-                    <div><label class="my-label" for="count-id">Количество страниц (шт)</label></div>
-                    <input id="count-id" class="my-input" type="number" v-model="page_count">
-                </div>
-
-                <!--  Цветность  -->
-                <div>
-                    <div><label class="my-label" for="page_color-id">Цветность</label></div>
-                    <select id="page_color-id" class="my-input" v-model="select_page_color">
-                        <option v-for="page_color in page_colors">{{ page_color }}</option>
-                    </select>
-                </div>
-
-                <!--  Материал  -->
-                <div>
-                    <div><label class="my-label" for="page_type-id">Материал</label></div>
-                    <select id="page_type-id" class="my-input" v-model="select_page_type">
-                        <option v-for="page_type in page_types">{{ page_type }}</option>
-                    </select>
-                </div>
-
-                <!--  Ламинация  -->
-                <div>
-                    <div><label class="my-label" for="page_lamination-id">Ламинация</label></div>
-                    <select id="page_lamination-id" class="my-input" v-model="select_page_lamination">
-                        <option v-for="lamination in laminations">{{ lamination }}</option>
-                    </select>
-                </div>
-
-                <!--  Ламнация  -->
-                <div v-show="hasLaminationsPage">
-                    <div><label class="my-label" for="page_laminations_type-id">Тип ламинации</label></div>
-                    <select id="page_laminations_type-id" class="my-input" v-model="select_page_laminations_type">
-                        <option v-for="laminations_type in laminations_types">{{ laminations_type }}</option>
-                    </select>
-                </div>
-            </div>
-
-
-            <!--  Обложка  -->
-            <div class="col-sm-6 col-md-4 col-lg-3 all">
-                <div class="button-block">
-                    <button class="my-button btn btn-outline-secondary" v-if="has_cover" v-on:click="has_cover = false">
-                        x
-                    </button>
-                    <button class="my-button btn btn-outline-secondary" v-else v-on:click="has_cover = true">+</button>
-                </div>
-                <h2>Обложка</h2>
-
-
-                <!--  Обложка  -->
-                <div v-show="has_cover">
-                    <!--  Цветность обложки  -->
+                    <!--  ввод количества страниц  -->
                     <div>
-                        <div><label class="my-label" for="cover_color-id">Цветность</label></div>
-                        <select id="cover_color-id" class="my-input" v-model="select_cover_color">
-                            <option v-for="cover_color in cover_colors">{{ cover_color }}</option>
+                        <div><label class="my-label" for="count-id">Количество страниц (шт)</label></div>
+                        <input id="count-id" class="my-input" type="number" v-model="select_page_count">
+                    </div>
+
+                    <!--  Цветность  -->
+                    <div>
+                        <div><label class="my-label" for="page_color-id">Цветность</label></div>
+                        <select id="page_color-id" class="my-input" v-model="select_page_color">
+                            <option v-for="page_color in page_colors">{{ page_color }}</option>
                         </select>
                     </div>
 
                     <!--  Материал  -->
                     <div>
-                        <div><label class="my-label" for="cover_type-id">Материал</label></div>
-                        <select id="cover_type-id" class="my-input" v-model="select_cover_type">
-                            <option v-for="cover_type in cover_types">{{ cover_type }}</option>
+                        <div><label class="my-label" for="page_type-id">Материал</label></div>
+                        <select id="page_type-id" class="my-input" v-model="select_page_material">
+                            <option v-for="material in materials">{{ material }}</option>
                         </select>
                     </div>
 
                     <!--  Ламинация  -->
                     <div>
-                        <div><label class="my-label" for="cover_lamination-id">Ламинация</label></div>
-                        <select id="cover_lamination-id" class="my-input" v-model="select_cover_lamination">
+                        <div><label class="my-label" for="page_lamination-id">Ламинация</label></div>
+                        <select id="page_lamination-id" class="my-input" v-model="select_page_lamination">
                             <option v-for="lamination in laminations">{{ lamination }}</option>
                         </select>
                     </div>
 
                     <!--  Ламнация  -->
-                    <div v-show="hasLaminationsCover">
-                        <div><label class="my-label" for="cover_laminations_type-id">Тип ламинации</label></div>
-                        <select id="cover_laminations_type-id" class="my-input" v-model="select_cover_laminations_type">
+                    <div v-show="hasLaminationsPage">
+                        <div><label class="my-label" for="page_laminations_type-id">Тип ламинации</label></div>
+                        <select id="page_laminations_type-id" class="my-input" v-model="select_page_laminations_type">
                             <option v-for="laminations_type in laminations_types">{{ laminations_type }}</option>
                         </select>
+                    </div>
+                </div>
+
+                <div class="all2">
+                    <div class="button-block">
+                        <button class="my-button btn btn-outline-secondary" v-if="has_cover"
+                                v-on:click="has_cover = false">
+                            x
+                        </button>
+                        <button class="my-button btn btn-outline-secondary" v-else v-on:click="has_cover = true">+
+                        </button>
+                    </div>
+                    <h2>Обложка</h2>
+
+                    <div v-show="has_cover">
+                        <!--  Цветность обложки  -->
+                        <div>
+                            <div><label class="my-label" for="cover_color-id">Цветность</label></div>
+                            <select id="cover_color-id" class="my-input" v-model="select_cover_color">
+                                <option v-for="cover_color in cover_colors">{{ cover_color }}</option>
+                            </select>
+                        </div>
+
+                        <!--  Материал  -->
+                        <div>
+                            <div><label class="my-label" for="cover_type-id">Материал</label></div>
+                            <select id="cover_type-id" class="my-input" v-model="select_cover_material">
+                                <option v-for="material in materials">{{ material }}</option>
+                            </select>
+                        </div>
+
+                        <!--  Ламинация  -->
+                        <div>
+                            <div><label class="my-label" for="cover_lamination-id">Ламинация</label></div>
+                            <select id="cover_lamination-id" class="my-input" v-model="select_cover_lamination">
+                                <option v-for="lamination in laminations">{{ lamination }}</option>
+                            </select>
+                        </div>
+
+                        <!--  Ламнация  -->
+                        <div v-show="hasLaminationsCover">
+                            <div><label class="my-label" for="cover_laminations_type-id">Тип ламинации</label></div>
+                            <select id="cover_laminations_type-id" class="my-input"
+                                    v-model="select_cover_laminations_type">
+                                <option v-for="laminations_type in laminations_types">{{ laminations_type }}</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>
 
 
             <!--  Стоимость  -->
-            <div class="col-sm-6 col-lg-3 all">
-                <h2>Стоимость</h2>
-                {{ coins }} руб
+            <div class="col-md-4 all">
+                <div class="all2">
+                    <h2>Стоимость</h2>
+                    <div>{{ coins }} руб</div>
+                </div>
+                <div class="all2">
+                    <h2>Информация</h2>
+                    <div><span>Крепление:</span> {{ select_type }}</div>
+                    <div v-show="isSpring"><span>Цвет пружины:</span> {{ select_spring_color }}</div>
+                </div>
             </div>
         </div>
     </div>
@@ -264,15 +278,17 @@
     new Vue({
         el: '#app',
         data: {
-            select_type: 'Скоба',
-            select_color: 'Белая',
-            colors: [
+            select_type: 'Скоба', // крепление
+
+            select_spring_color: 'Белая', // цвет пружины
+            spring_colors: [
                 'Белая',
                 'Черная',
                 'Серебро'
             ],
-            select_format: {name: 'Книга, A6 (105 × 148 мм)', width: 105, height: 148},
-            format_orientations: [
+
+            select_format: {name: 'Книга, A6 (105 × 148 мм)', width: 105, height: 148}, // формат
+            formats: [
                 {name: 'Книга, A6 (105 × 148 мм)', width: 105, height: 148},
                 {name: 'Книга, A5 (105 × 148 мм)', width: 148, height: 210},
                 {name: 'Книга, A4 (105 × 148 мм)', width: 210, height: 297},
@@ -283,24 +299,30 @@
                 {name: 'Альбом, A3 (148 × 105 мм)', width: 420, height: 297},
                 {name: 'Свой формат', width: 100, height: 100}
             ],
-            page_count: 8,
-            select_page_color: '4+0',
+
+            select_page_count: 8, // количество страниц
+
+            select_page_color: '4+0', // цветность блока
             page_colors: [
                 '4+0',
                 '1+0',
                 '4+4',
                 '1+1'
             ],
-            select_printing: 10,
-            select_cover_color: '4+0',
+
+            select_printing: 10, // тираж
+
+            select_cover_color: '4+0', // цветность обложки
             cover_colors: [
                 '4+0',
                 '1+0',
                 '4+4',
                 '1+1'
             ],
-            select_page_type: 'офсетка 80гр',
-            page_types: [
+
+            select_page_material: 'офсетка 80гр', // материал блока
+            select_cover_material: 'офсетка 80гр', // материал обложки
+            materials: [
                 'офсетка 80гр',
                 'офсетка 100гр',
                 'офсетка 120гр',
@@ -316,25 +338,9 @@
                 'картон 270гр',
                 'картон 300гр'
             ],
-            select_cover_type: 'офсетка 80гр',
-            cover_types: [
-                'офсетка 80гр',
-                'офсетка 100гр',
-                'офсетка 120гр',
-                'офсетка 160гр',
-                'офсетка 180гр',
-                'офсетка 200гр',
-                'меловка 130гр',
-                'меловка 150гр',
-                'меловка 170гр',
-                'меловка 200гр',
-                'меловка 250гр',
-                'меловка 300гр',
-                'картон 270гр',
-                'картон 300гр'
-            ],
-            select_page_lamination: 'Без ламинации',
-            select_cover_lamination: 'Без ламинации',
+
+            select_page_lamination: 'Без ламинации', // ламинация блока
+            select_cover_lamination: 'Без ламинации', // аминация обложки
             laminations: [
                 'Без ламинации',
                 'Глянец 32 мкр',
@@ -344,13 +350,15 @@
                 'Ламинация soft tach',
                 'Прозрачный пластик'
             ],
-            select_cover_laminations_type: '1+0',
-            select_page_laminations_type: '1+0',
+
+            select_page_laminations_type: '1+0', // ламинация блока
+            select_cover_laminations_type: '1+0', // ламинация обложки
             laminations_types: [
                 '1+0',
                 '1+1'
             ],
-            has_cover: true
+
+            has_cover: true // наличие обложки
         },
         computed: {
             isSpring: function () {
