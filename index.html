@@ -268,10 +268,10 @@
 
                 <div class="all2">
                     <h2>Стоимость</h2>
-                    <div><span>Стоимость блока:</span> {{ coins_pages }}$</div>
-                    <div><span>Стоимость обложки:</span> {{ coins_cover }}$</div>
+                    <div><span>Стоимость блока:</span> {{ coins_pages.toFixed(2) }}$</div>
+                    <div><span>Стоимость обложки:</span> {{ coins_cover.toFixed(2) }}$</div>
                     <div><span>Тираж:</span> {{ select_printing }}шт</div>
-                    <div><span>Итого:</span> {{ coins }}$</div>
+                    <div><span>Итого:</span> {{ coins.toFixed(2) }}$</div>
                 </div>
 
                 <div class="all2">
@@ -286,7 +286,7 @@
                     <div><span>Формат:</span> {{ select_format.name }}</div>
 
                     <br><span>Блок</span>
-                    <div><span>Количество страниц:</span> {{ select_page_count }}шт</div>
+                    <div><span>Количество страниц:</span> {{ select_page_count }}шт ({{ count_pages }})</div>
                     <div><span>Материал:</span> {{ select_page_material.name }}</div>
                     <div><span>Цветность:</span> {{ select_page_color }}</div>
                     <div v-show="hasLaminationsPage"><span>Ламинация:</span> {{ select_page_lamination }}
@@ -472,14 +472,30 @@
                 }
                 return this.select_format.height
             },
+            count_pages: function () {
+                if (this.select_page_count % 2 === 0) {
+                    return this.select_page_count
+                } else {
+                    return parseInt(this.select_page_count) + 1
+                }
+            },
             coins_pages: function () {
-                sum = this.select_page_count * this.select_page_material.price *
-                    (this.select_format.width / 1000) *
-                    (this.select_format.height / 1000)
-                return Math.round(sum * 100) / 100
+                // материал
+                sum = this.select_page_material.price *
+                    (this.getWidth / 1000) *
+                    (this.getHeight / 1000)
+                // печать
+                // ламинация
+                return this.count_pages * sum
             },
             coins_cover: function () {
-                return 0
+                // материал
+                sum = this.select_page_material.price *
+                    (this.getWidth / 1000) *
+                    (this.getHeight / 1000)
+                // печать
+                // ламинация
+                return 2 * sum
             },
             coins: function () {
                 return this.select_printing * (this.coins_pages + this.coins_cover)
