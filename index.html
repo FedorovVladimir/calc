@@ -79,7 +79,7 @@
     /* buttons */
     .my-button {
         position: absolute;
-        top: 0;
+        top: 7px;
         right: 0;
     }
 
@@ -139,23 +139,21 @@
                     <input id="number-id" class="my-input" type="number" v-model="select_printing">
                 </div>
 
-                <!--  Ширина  -->
+                <!--  Ширина и высота  -->
                 <div>
                     <div><label class="my-label" for="width-id">Ширина (мм)</label></div>
                     <input id="width-id" class="my-input" max="420" min="0" type="number"
                            v-model="select_format.width" :disabled="!isCustomSize">
                 </div>
-
-                <!--  Высота  -->
                 <div>
                     <div><label class="my-label" for="height-id">Высота (мм)</label></div>
                     <input id="height-id" class="my-input" max="420" min="0" type="number"
                            v-model="select_format.height" :disabled="!isCustomSize">
                 </div>
 
-                <!--  Формата и ориентации  -->
+                <!--  Формата  -->
                 <div>
-                    <div><label class="my-label" for="format-id">Формат и ориентация</label></div>
+                    <div><label class="my-label" for="format-id">Формат</label></div>
                     <select id="format-id" class="my-input" v-model="select_format">
                         <option v-for="format_orientation in formats"
                                 v-bind:value="format_orientation">
@@ -177,21 +175,19 @@
                         <input id="count-id" class="my-input" type="number" v-model="select_page_count">
                     </div>
 
-                    <!--  Цветность  -->
+                    <!--  Цветность и материал  -->
                     <div>
+                        <div><label class="my-label" for="page_type-id">Материал</label></div>
+                        <select id="page_type-id" class="my-input" v-model="select_page_material">
+                            <option v-for="material in materials">{{ material }}</option>
+                        </select>
+
                         <div><label class="my-label" for="page_color-id">Цветность</label></div>
                         <select id="page_color-id" class="my-input" v-model="select_page_color">
                             <option v-for="page_color in page_colors">{{ page_color }}</option>
                         </select>
                     </div>
 
-                    <!--  Материал  -->
-                    <div>
-                        <div><label class="my-label" for="page_type-id">Материал</label></div>
-                        <select id="page_type-id" class="my-input" v-model="select_page_material">
-                            <option v-for="material in materials">{{ material }}</option>
-                        </select>
-                    </div>
 
                     <!--  Ламинация  -->
                     <div>
@@ -214,24 +210,22 @@
                     <div class="button-block">
                         <button class="my-button btn btn-outline-secondary" v-if="has_cover"
                                 v-on:click="has_cover = false">
-                            x
+                            убрать
                         </button>
-                        <button class="my-button btn btn-outline-secondary" v-else v-on:click="has_cover = true">+
+                        <button class="my-button btn btn-outline-secondary" v-else
+                                v-on:click="has_cover = true">
+                            добавить
                         </button>
                     </div>
                     <h2>Обложка</h2>
 
                     <div v-show="has_cover">
-                        <!--  Цветность обложки  -->
+                        <!--  Цветность и материал  -->
                         <div>
                             <div><label class="my-label" for="cover_color-id">Цветность</label></div>
                             <select id="cover_color-id" class="my-input" v-model="select_cover_color">
                                 <option v-for="cover_color in cover_colors">{{ cover_color }}</option>
                             </select>
-                        </div>
-
-                        <!--  Материал  -->
-                        <div>
                             <div><label class="my-label" for="cover_type-id">Материал</label></div>
                             <select id="cover_type-id" class="my-input" v-model="select_cover_material">
                                 <option v-for="material in materials">{{ material }}</option>
@@ -259,7 +253,7 @@
             </div>
 
 
-            <!--  Стоимость  -->
+            <!--  Стоимость и информация  -->
             <div class="col-md-4 all">
                 <div class="all2">
                     <h2>Стоимость</h2>
@@ -274,18 +268,24 @@
                     <div><span>Размеры:</span> {{ select_format.width }}мм x {{ select_format.height }}мм
                         ({{ getWidth }} x {{ getHeight }})
                     </div>
-                    <div><span>Формат и ориентация:</span> {{ select_format.name }}</div>
+                    <div><span>Формат:</span> {{ select_format.name }}</div>
 
                     <br><span>Блок</span>
                     <div><span>Количество страниц:</span> {{ select_page_count }}шт</div>
-                    <div><span>Цветность:</span> {{ select_page_color }}</div>
                     <div><span>Материал:</span> {{ select_page_material }}</div>
-                    <div v-show="hasLaminationsPage"><span>Ламинация:</span> {{ select_page_lamination }} ({{ select_page_laminations_type }})</div>
+                    <div><span>Цветность:</span> {{ select_page_color }}</div>
+                    <div v-show="hasLaminationsPage"><span>Ламинация:</span> {{ select_page_lamination }}
+                        ({{ select_page_laminations_type }})
+                    </div>
 
-                    <br><span>Обложка</span>
-                    <div><span>Цветность:</span> {{ select_cover_color }}</div>
-                    <div><span>Материал:</span> {{ select_cover_material }}</div>
-                    <div v-show="hasLaminationsCover"><span>Ламинация:</span> {{ select_cover_lamination }} ({{ select_cover_laminations_type }})</div>
+                    <div v-show="has_cover">
+                        <br><span>Обложка</span>
+                        <div><span>Материал:</span> {{ select_cover_material }}</div>
+                        <div><span>Цветность:</span> {{ select_cover_color }}</div>
+                        <div v-show="hasLaminationsCover"><span>Ламинация:</span> {{ select_cover_lamination }}
+                            ({{ select_cover_laminations_type }})
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
