@@ -70,6 +70,7 @@
         display: inline-block;
         /*border: cadetblue 1px solid;*/
     }
+
     .all2 {
         margin-top: 20px;
     }
@@ -141,15 +142,15 @@
                 <!--  Ширина  -->
                 <div>
                     <div><label class="my-label" for="width-id">Ширина (мм)</label></div>
-                    <input id="width-id" class="my-input" type="number" v-model="select_format.width"
-                           :disabled="!isCustomSize">
+                    <input id="width-id" class="my-input" max="420" min="0" type="number"
+                           v-model="select_format.width" :disabled="!isCustomSize">
                 </div>
 
                 <!--  Высота  -->
                 <div>
                     <div><label class="my-label" for="height-id">Высота (мм)</label></div>
-                    <input id="height-id" class="my-input" type="number" v-model="select_format.height"
-                           :disabled="!isCustomSize">
+                    <input id="height-id" class="my-input" max="420" min="0" type="number"
+                           v-model="select_format.height" :disabled="!isCustomSize">
                 </div>
 
                 <!--  Формата и ориентации  -->
@@ -268,6 +269,10 @@
                     <h2>Информация</h2>
                     <div><span>Крепление:</span> {{ select_type }}</div>
                     <div v-show="isSpring"><span>Цвет пружины:</span> {{ select_spring_color }}</div>
+                    <div><span>Тираж:</span> {{ select_printing }}шт</div>
+                    <div><span>Размеры:</span> {{ select_format.width }}мм x {{ select_format.height }}мм
+                        ({{ getWidth }} x {{ getHeight }})
+                    </div>
                 </div>
             </div>
         </div>
@@ -290,13 +295,13 @@
             select_format: {name: 'Книга, A6 (105 × 148 мм)', width: 105, height: 148}, // формат
             formats: [
                 {name: 'Книга, A6 (105 × 148 мм)', width: 105, height: 148},
-                {name: 'Книга, A5 (105 × 148 мм)', width: 148, height: 210},
-                {name: 'Книга, A4 (105 × 148 мм)', width: 210, height: 297},
-                {name: 'Книга, A3 (105 × 148 мм)', width: 297, height: 420},
+                {name: 'Книга, A5 (148 × 210 мм)', width: 148, height: 210},
+                {name: 'Книга, A4 (210 × 297 мм)', width: 210, height: 297},
+                {name: 'Книга, A3 (297 × 420 мм)', width: 297, height: 420},
                 {name: 'Альбом, A6 (148 × 105 мм)', width: 148, height: 105},
-                {name: 'Альбом, A5 (148 × 105 мм)', width: 210, height: 148},
-                {name: 'Альбом, A4 (148 × 105 мм)', width: 297, height: 210},
-                {name: 'Альбом, A3 (148 × 105 мм)', width: 420, height: 297},
+                {name: 'Альбом, A5 (210 × 148 мм)', width: 210, height: 148},
+                {name: 'Альбом, A4 (297 × 210 мм)', width: 297, height: 210},
+                {name: 'Альбом, A3 (420 × 297 мм)', width: 420, height: 297},
                 {name: 'Свой формат', width: 100, height: 100}
             ],
 
@@ -381,6 +386,58 @@
             },
             hasLaminationsPage: function () {
                 return this.select_page_lamination !== 'Без ламинации'
+            },
+            getWidth: function () {
+                if (this.isCustomSize) {
+                    if (this.select_format.width > 420) {
+                        return 420
+                    }
+                    if (this.select_format.width < 0) {
+                        return 0
+                    }
+                    if (0 < this.select_format.width && this.select_format.width < 105) {
+                        return 105
+                    }
+                    if (105 < this.select_format.width && this.select_format.width < 148) {
+                        return 148
+                    }
+                    if (148 < this.select_format.width && this.select_format.width < 210) {
+                        return 210
+                    }
+                    if (210 < this.select_format.width && this.select_format.width < 297) {
+                        return 297
+                    }
+                    if (297 < this.select_format.width && this.select_format.width < 420) {
+                        return 420
+                    }
+                }
+                return this.select_format.width
+            },
+            getHeight: function () {
+                if (this.isCustomSize) {
+                    if (this.select_format.height > 420) {
+                        return 420
+                    }
+                    if (this.select_format.height < 0) {
+                        return 0
+                    }
+                    if (0 < this.select_format.height && this.select_format.height < 105) {
+                        return 105
+                    }
+                    if (105 < this.select_format.height && this.select_format.height < 148) {
+                        return 148
+                    }
+                    if (148 < this.select_format.height && this.select_format.height < 210) {
+                        return 210
+                    }
+                    if (210 < this.select_format.height && this.select_format.height < 297) {
+                        return 297
+                    }
+                    if (297 < this.select_format.height && this.select_format.height < 420) {
+                        return 420
+                    }
+                }
+                return this.select_format.height
             }
         }
     });

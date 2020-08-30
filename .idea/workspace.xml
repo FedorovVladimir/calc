@@ -19,7 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="890b8ba2-2826-4816-bc4b-9f41abe34d58" name="Default Changelist" comment="add new grid">
+    <list default="true" id="890b8ba2-2826-4816-bc4b-9f41abe34d58" name="Default Changelist" comment="add stock values">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
@@ -72,7 +72,7 @@
       <workItem from="1598630768514" duration="2706000" />
       <workItem from="1598679307659" duration="16118000" />
       <workItem from="1598728727062" duration="3435000" />
-      <workItem from="1598775447135" duration="4003000" />
+      <workItem from="1598775447135" duration="5576000" />
     </task>
     <task id="LOCAL-00001" summary="add first selector">
       <created>1598546621259</created>
@@ -235,7 +235,14 @@
       <option name="project" value="LOCAL" />
       <updated>1598779234376</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="add stock values">
+      <created>1598779526937</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1598779526937</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -269,7 +276,8 @@
     <MESSAGE value="start calc coins" />
     <MESSAGE value="add types" />
     <MESSAGE value="add new grid" />
-    <option name="LAST_COMMIT_MESSAGE" value="add new grid" />
+    <MESSAGE value="add stock values" />
+    <option name="LAST_COMMIT_MESSAGE" value="add stock values" />
   </component>
   <component name="WindowStateProjectService">
     <state x="583" y="185" width="1233" height="737" key="SettingsEditor" timestamp="1598693257697">
@@ -277,11 +285,11 @@
     </state>
     <state x="922" y="188" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1598540992591" />
     <state x="583" y="185" width="1233" height="737" key="SettingsEditor/72.27.1848.1053@72.27.1848.1053" timestamp="1598693257697" />
-    <state x="1010" y="218" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1598779236178">
+    <state x="1010" y="218" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1598779528193">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="975" y="196" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1598551520254" />
-    <state x="1010" y="218" width="800" height="535" key="Vcs.Push.Dialog.v2/72.27.1848.1053@72.27.1848.1053" timestamp="1598779236178" />
+    <state x="1010" y="218" width="800" height="535" key="Vcs.Push.Dialog.v2/72.27.1848.1053@72.27.1848.1053" timestamp="1598779528193" />
     <state x="1068" y="167" width="770" height="780" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1598695369429">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
