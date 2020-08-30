@@ -263,16 +263,29 @@
             <div class="col-md-4 all">
                 <div class="all2">
                     <h2>Стоимость</h2>
-                    <div>{{ coins }} руб</div>
+                    <div>Итого: {{ coins }} руб</div>
                 </div>
                 <div class="all2">
                     <h2>Информация</h2>
+                    <br><span>Общие</span>
                     <div><span>Крепление:</span> {{ select_type }}</div>
                     <div v-show="isSpring"><span>Цвет пружины:</span> {{ select_spring_color }}</div>
                     <div><span>Тираж:</span> {{ select_printing }}шт</div>
                     <div><span>Размеры:</span> {{ select_format.width }}мм x {{ select_format.height }}мм
                         ({{ getWidth }} x {{ getHeight }})
                     </div>
+                    <div><span>Формат и ориентация:</span> {{ select_format.name }}</div>
+
+                    <br><span>Блок</span>
+                    <div><span>Количество страниц:</span> {{ select_page_count }}шт</div>
+                    <div><span>Цветность:</span> {{ select_page_color }}</div>
+                    <div><span>Материал:</span> {{ select_page_material }}</div>
+                    <div v-show="hasLaminationsPage"><span>Ламинация:</span> {{ select_page_lamination }} ({{ select_page_laminations_type }})</div>
+
+                    <br><span>Обложка</span>
+                    <div><span>Цветность:</span> {{ select_cover_color }}</div>
+                    <div><span>Материал:</span> {{ select_cover_material }}</div>
+                    <div v-show="hasLaminationsCover"><span>Ламинация:</span> {{ select_cover_lamination }} ({{ select_cover_laminations_type }})</div>
                 </div>
             </div>
         </div>
