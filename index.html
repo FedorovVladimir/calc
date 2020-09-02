@@ -202,7 +202,7 @@
                     <div>
                         <div><label class="my-label" for="page_lamination-id">Ламинация</label></div>
                         <select id="page_lamination-id" class="my-input" v-model="select_page_lamination">
-                            <option v-for="lamination in laminations">{{ lamination }}</option>
+                            <option v-for="lamination in laminations">{{ lamination.name }}</option>
                         </select>
                     </div>
 
@@ -210,7 +210,7 @@
                     <div v-show="hasLaminationsPage">
                         <div><label class="my-label" for="page_laminations_type-id">Тип ламинации</label></div>
                         <select id="page_laminations_type-id" class="my-input" v-model="select_page_laminations_type">
-                            <option v-for="laminations_type in laminations_types">{{ laminations_type }}</option>
+                            <option v-for="laminations_type in laminations_types">{{ laminations_type.name }}</option>
                         </select>
                     </div>
                 </div>
@@ -246,7 +246,7 @@
                         <div>
                             <div><label class="my-label" for="cover_lamination-id">Ламинация</label></div>
                             <select id="cover_lamination-id" class="my-input" v-model="select_cover_lamination">
-                                <option v-for="lamination in laminations">{{ lamination }}</option>
+                                <option v-for="lamination in laminations">{{ lamination.name }}</option>
                             </select>
                         </div>
 
@@ -255,7 +255,7 @@
                             <div><label class="my-label" for="cover_laminations_type-id">Тип ламинации</label></div>
                             <select id="cover_laminations_type-id" class="my-input"
                                     v-model="select_cover_laminations_type">
-                                <option v-for="laminations_type in laminations_types">{{ laminations_type }}</option>
+                                <option v-for="laminations_type in laminations_types">{{ laminations_type.name }}</option>
                             </select>
                         </div>
                     </div>
@@ -288,17 +288,17 @@
                     <br><span>Блок</span>
                     <div><span>Количество страниц:</span> {{ select_page_count }}шт ({{ count_pages }})</div>
                     <div><span>Материал:</span> {{ select_page_material.name }}</div>
-                    <div><span>Цветность:</span> {{ select_page_color }}</div>
-                    <div v-show="hasLaminationsPage"><span>Ламинация:</span> {{ select_page_lamination }}
-                        ({{ select_page_laminations_type }})
+                    <div><span>Цветность:</span> {{ select_page_color.name }}</div>
+                    <div v-show="hasLaminationsPage"><span>Ламинация:</span> {{ select_page_lamination.name }}
+                        ({{ select_page_laminations_type.name }})
                     </div>
 
                     <div v-show="has_cover">
                         <br><span>Обложка</span>
                         <div><span>Материал:</span> {{ select_cover_material.name }}</div>
                         <div><span>Цветность:</span> {{ select_cover_color }}</div>
-                        <div v-show="hasLaminationsCover"><span>Ламинация:</span> {{ select_cover_lamination }}
-                            ({{ select_cover_laminations_type }})
+                        <div v-show="hasLaminationsCover"><span>Ламинация:</span> {{ select_cover_lamination.name }}
+                            ({{ select_cover_laminations_type.name }})
                         </div>
                     </div>
                 </div>
@@ -335,12 +335,12 @@
 
             select_page_count: 100, // количество страниц
 
-            select_page_color: {name: '4+4', koef: 2}, // цветность блока
+            select_page_color: {name: '4+4', koef: 2, price: 0.0425}, // цветность блока
             page_colors: [
-                {name: '4+0', koef: 1},
-                {name: '1+0', koef: 1},
-                {name: '4+4', koef: 2},
-                {name: '1+1', koef: 2}
+                {name: '4+0', koef: 1, price: 0.0425},
+                {name: '1+0', koef: 1, price: 0.0425},
+                {name: '4+4', koef: 2, price: 0.0425},
+                {name: '1+1', koef: 2, price: 0.0425}
             ],
 
             select_printing: 30, // тираж
@@ -372,23 +372,23 @@
                 {name: 'картон 300 гр/м2', price: 1000 * 300 / 1000000}
             ],
 
-            select_page_lamination: 'Без ламинации', // ламинация блока
-            select_cover_lamination: 'Матовая 75 мкр', // аминация обложки
+            select_page_lamination: { name: 'Без ламинации', price: 0.0 }, // ламинация блока
+            select_cover_lamination: { name: 'Матовая 75 мкр', price: 19.2 }, // аминация обложки
             laminations: [
-                'Без ламинации',
-                'Глянец 32 мкр',
-                'Глянец 75 мкр',
-                'Матовая 32 мкр',
-                'Матовая 75 мкр',
-                'Ламинация soft tach',
-                'Прозрачный пластик'
+                { name: 'Без ламинации', price: 0.0 },
+                { name: 'Глянец 32 мкр', price:  0.72 },
+                { name: 'Глянец 75 мкр', price: 13.44 },
+                { name: 'Матовая 32 мкр', price: 0.72 },
+                { name: 'Матовая 75 мкр', price: 19.2 },
+                { name: 'Ламинация soft tach', price: 5.52 },
+                { name: 'Прозрачный пластик', price: 4.0 }
             ],
 
-            select_page_laminations_type: '1+0', // ламинация блока
-            select_cover_laminations_type: '1+1', // ламинация обложки
+            select_page_laminations_type: { name: '1+0', koef: 1 }, // ламинация блока
+            select_cover_laminations_type: { name: '1+1', koef: 2 }, // ламинация обложки
             laminations_types: [
-                '1+0',
-                '1+1'
+                { name: '1+0', koef: 1 },
+                { name: '1+1', koef: 2 }
             ],
 
             has_cover: true, // наличие обложки
@@ -478,9 +478,16 @@
                 sum = this.select_page_material.price *
                     (this.getWidth / 1000) *
                     (this.getHeight / 1000)
+
                 // печать
+                progons_count = this.count_pages * this.select_page_color.koef
+                price_print = this.select_page_color.price * (this.getWidth / 1000) * (this.getHeight / 1000)
+                sum += progons_count * price_print
+
                 // ламинация
-                return this.count_pages * sum
+                sum += this.count_pages * this.laminations_types.koef * this.laminations.price * 7175.8 * Math.pow(this.count_pages, -0.396) / 100
+
+                return sum
             },
             coins_cover: function () {
                 // материал
