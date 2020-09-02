@@ -193,7 +193,7 @@
 
                         <div><label class="my-label" for="page_color-id">Цветность</label></div>
                         <select id="page_color-id" class="my-input" v-model="select_page_color">
-                            <option v-for="page_color in page_colors">{{ page_color }}</option>
+                            <option v-for="page_color in page_colors" v-bind:value="page_color">{{ page_color.name }}</option>
                         </select>
                     </div>
 
@@ -302,12 +302,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!--                <div class="all2 paint">-->
-                <!--                    <svg :width="select_format.width/2" :height="select_format.height/2">-->
-                <!--                        <rect width="100%" height="100%" style="fill:rgb(0,0,255);stroke-width:1;stroke:rgb(0,0,0)"/>-->
-                <!--                    </svg>-->
-                <!--                </div>-->
             </div>
         </div>
     </div>
@@ -341,12 +335,12 @@
 
             select_page_count: 100, // количество страниц
 
-            select_page_color: '4+4', // цветность блока
+            select_page_color: {name: '4+4', koef: 2}, // цветность блока
             page_colors: [
-                '4+0',
-                '1+0',
-                '4+4',
-                '1+1'
+                {name: '4+0', koef: 1},
+                {name: '1+0', koef: 1},
+                {name: '4+4', koef: 2},
+                {name: '1+1', koef: 2}
             ],
 
             select_printing: 30, // тираж

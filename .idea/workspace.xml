@@ -19,7 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="890b8ba2-2826-4816-bc4b-9f41abe34d58" name="Default Changelist" comment="add calc coins block">
+    <list default="true" id="890b8ba2-2826-4816-bc4b-9f41abe34d58" name="Default Changelist" comment="add calc coins cover">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
@@ -72,7 +72,8 @@
       <workItem from="1598630768514" duration="2706000" />
       <workItem from="1598679307659" duration="16118000" />
       <workItem from="1598728727062" duration="3435000" />
-      <workItem from="1598775447135" duration="16429000" />
+      <workItem from="1598775447135" duration="17311000" />
+      <workItem from="1599053387155" duration="388000" />
     </task>
     <task id="LOCAL-00001" summary="add first selector">
       <created>1598546621259</created>
@@ -277,7 +278,14 @@
       <option name="project" value="LOCAL" />
       <updated>1598792725937</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="add calc coins cover">
+      <created>1598794163878</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1598794163878</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -315,7 +323,8 @@
     <MESSAGE value="add max min" />
     <MESSAGE value="add info" />
     <MESSAGE value="add calc coins block" />
-    <option name="LAST_COMMIT_MESSAGE" value="add calc coins block" />
+    <MESSAGE value="add calc coins cover" />
+    <option name="LAST_COMMIT_MESSAGE" value="add calc coins cover" />
   </component>
   <component name="WindowStateProjectService">
     <state x="583" y="185" width="1233" height="737" key="SettingsEditor" timestamp="1598693257697">
@@ -323,11 +332,11 @@
     </state>
     <state x="922" y="188" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1598540992591" />
     <state x="583" y="185" width="1233" height="737" key="SettingsEditor/72.27.1848.1053@72.27.1848.1053" timestamp="1598693257697" />
-    <state x="1010" y="218" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1598792727474">
+    <state x="1010" y="218" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1598794164945">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="975" y="196" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1598551520254" />
-    <state x="1010" y="218" width="800" height="535" key="Vcs.Push.Dialog.v2/72.27.1848.1053@72.27.1848.1053" timestamp="1598792727474" />
+    <state x="1010" y="218" width="800" height="535" key="Vcs.Push.Dialog.v2/72.27.1848.1053@72.27.1848.1053" timestamp="1598794164945" />
     <state x="1068" y="167" width="770" height="780" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1598695369429">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
