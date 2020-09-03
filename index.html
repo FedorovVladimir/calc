@@ -202,7 +202,7 @@
                     <div>
                         <div><label class="my-label" for="page_lamination-id">Ламинация</label></div>
                         <select id="page_lamination-id" class="my-input" v-model="select_page_lamination">
-                            <option v-for="lamination in laminations">{{ lamination.name }}</option>
+                          <option v-for="lamination in laminations" v-bind:value="lamination">{{ lamination.name }}</option>
                         </select>
                     </div>
 
@@ -210,7 +210,7 @@
                     <div v-show="hasLaminationsPage">
                         <div><label class="my-label" for="page_laminations_type-id">Тип ламинации</label></div>
                         <select id="page_laminations_type-id" class="my-input" v-model="select_page_laminations_type">
-                            <option v-for="laminations_type in laminations_types">{{ laminations_type.name }}</option>
+                            <option v-for="laminations_type in laminations_types" v-bind:value="laminations_type">{{ laminations_type.name }}</option>
                         </select>
                     </div>
                 </div>
@@ -246,7 +246,7 @@
                         <div>
                             <div><label class="my-label" for="cover_lamination-id">Ламинация</label></div>
                             <select id="cover_lamination-id" class="my-input" v-model="select_cover_lamination">
-                                <option v-for="lamination in laminations">{{ lamination.name }}</option>
+                                <option v-for="lamination in laminations" v-bind:value="lamination">{{ lamination.name }}</option>
                             </select>
                         </div>
 
@@ -255,7 +255,7 @@
                             <div><label class="my-label" for="cover_laminations_type-id">Тип ламинации</label></div>
                             <select id="cover_laminations_type-id" class="my-input"
                                     v-model="select_cover_laminations_type">
-                                <option v-for="laminations_type in laminations_types">{{ laminations_type.name }}</option>
+                                <option v-for="laminations_type in laminations_types" v-bind:value="laminations_type">{{ laminations_type.name }}</option>
                             </select>
                         </div>
                     </div>
