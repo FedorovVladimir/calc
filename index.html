@@ -268,10 +268,10 @@
 
                 <div class="all2">
                     <h2>Стоимость</h2>
-                    <div><span>Стоимость блока:</span> {{ coins_pages.toFixed(2) }}$</div>
-                    <div><span>Стоимость обложки:</span> {{ coins_cover.toFixed(2) }}$</div>
+                    <div><span>Стоимость блока:</span> {{ coins_pages.toFixed(2) }}€</div>
+                    <div><span>Стоимость обложки:</span> {{ coins_cover.toFixed(2) }}€</div>
                     <div><span>Тираж:</span> {{ select_printing }}шт</div>
-                    <div><span>Итого:</span> {{ coins.toFixed(2) }}$</div>
+                    <div><span>Итого:</span> {{ coins.toFixed(2) }}€</div>
                 </div>
 
                 <div class="all2">
@@ -356,7 +356,7 @@
             select_page_material: {name: 'меловка 130 гр/м2', price: 950 * 130 / 1000000}, // материал блока
             select_cover_material: {name: 'меловка 300 гр/м2', price: 950 * 300 / 1000000}, // материал обложки
             materials: [
-                {name: 'офсетка 80 гр/м2', price: 1000 * 80 / 1000000}, // $/м2
+                {name: 'офсетка 80 гр/м2', price: 1000 * 80 / 1000000}, // €/м2
                 {name: 'офсетка 100 гр/м2', price: 1000 * 100 / 1000000},
                 {name: 'офсетка 120 гр/м2', price: 1000 * 120 / 1000000},
                 {name: 'офсетка 160 гр/м2', price: 1000 * 160 / 1000000},
@@ -485,7 +485,12 @@
                 sum += progons_count * price_print
 
                 // ламинация
-                sum += this.count_pages * this.laminations_types.koef * this.laminations.price * 7175.8 * Math.pow(this.count_pages, -0.396) / 100
+                // в exel приведенна цена ламинации за лист - взял за дефолт A4 => если A3 = A4 * 2 и т.д.
+                // Ламинация = ЦенаЗаЛист * ТипЛаминации(1+0/1+1) * КоличествоСтраниц * Тираж
+                a4square = 210 * 297
+                priceByOneList = this.select_page_lamination.price / a4square * (this.getHeight * this.getWidth)
+                lamination = priceByOneList * this.select_page_laminations_type.koef * this.select_page_count * this.select_printing
+                sum += lamination
 
                 return sum
             },
